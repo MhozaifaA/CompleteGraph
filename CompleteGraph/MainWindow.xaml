@@ -1,0 +1,71 @@
+﻿<Window x:Class="CompleteGraph.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CompleteGraph"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid x:Name="canvas">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <WrapPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+
+            <StackPanel Orientation="Horizontal" Margin="10 0">
+                <Label Margin="0 0 5 0"  VerticalAlignment="Center">Nodes: </Label>
+                <TextBlock Text="{Binding ElementName=SliderNodes, Path=Value}" VerticalAlignment="Center"></TextBlock>
+                <Slider x:Name="SliderNodes" Width="120"  IsSnapToTickEnabled="True"    Maximum="50" Minimum="3" Value="24"  VerticalAlignment="Center" SmallChange="1" TickPlacement="Both" Cursor="Hand" TickFrequency="3" ></Slider>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10 0">
+
+                <Label Margin="0 0 10 0"  VerticalAlignment="Center">Colors</Label>
+
+                <ComboBox SelectionChanged="ComboColor_SelectionChanged" Name="ComboColor" Width="120" Margin="0 5" IsEditable="False" >
+                    <ComboBoxItem>
+                        <Rectangle Width="100" Height="20" Fill="Orange"></Rectangle>
+                    </ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">
+                        <Rectangle Width="100" Height="20" Fill="DarkKhaki"></Rectangle>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <Rectangle Width="100" Height="20" Fill="CadetBlue"></Rectangle>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <Rectangle Width="100" Height="20" Fill="GreenYellow"></Rectangle>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <Rectangle Width="100" Height="20" Fill="Black"></Rectangle>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <Rectangle Width="100" Height="20" Fill="Red"></Rectangle>
+                    </ComboBoxItem>
+                </ComboBox>
+
+            </StackPanel>
+
+        </WrapPanel>
+
+
+
+        <Viewbox Grid.Row="1" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <Polyline Grid.Row="1" Name="LineGraph"  HorizontalAlignment="Center"  VerticalAlignment="Center" 
+              Stroke="CadetBlue"
+             StrokeThickness="0.001"  />
+        </Viewbox>
+
+
+        <Button Margin="10" Grid.Row="2" MaxWidth="160" Height="40" IsEnabled="False" Name="ButtonExecute" Click="ButtonExecute_Click">
+            Execute
+        </Button>
+
+
+    </Grid>
+</Window>
